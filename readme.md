@@ -8,7 +8,7 @@ Diferente de abordagens baseadas exclusivamente em notebooks, este projeto utili
 
 * **DVC (Data Version Control):** Orquestração do pipeline de dados. O sistema identifica alterações em dados ou scripts e executa apenas as etapas necessárias.
 * **MLflow:** Rastreamento de experimentos, registro de hiperparâmetros e comparação visual de performance entre modelos.
-* **Estrutura Modular:** Código organizado em módulos Python (pasta `src`) e scripts de execução de pipeline, facilitando a manutenção e escala.
+* **Estrutura Modular:** Código organizado em módulos Python (pasta src) e scripts de execução de pipeline, facilitando a manutenção e escala.
 
 ## Tecnologias Utilizadas
 
@@ -29,12 +29,12 @@ Diferente de abordagens baseadas exclusivamente em notebooks, este projeto utili
 ├── params.yaml         # Centralização de hiperparâmetros e configurações
 └── requirements.txt    # Dependências do projeto
 
-Instruções de Execução
 
-1. Configuração do Ambiente
+## Instruções de Execução
+
+### 1. Configuração do Ambiente
 Criação do ambiente virtual e instalação das bibliotecas necessárias:
 
-Bash
 # Criar o ambiente virtual
 python -m venv .venv
 
@@ -43,22 +43,23 @@ python -m venv .venv
 
 # Instalar dependências
 pip install -r requirements.txt
-2. Execução do Pipeline
+
+### 2. Execução do Pipeline
 Para executar todo o fluxo de processamento e treinamento definido no DVC:
 
-Bash
 dvc repro
+
 O DVC gerenciará as dependências entre os scripts e garantirá que o estado final seja alcançado.
 
-3. Análise de Resultados
+### 3. Análise de Resultados
 Para visualizar as métricas finais no terminal:
 
-Bash
 dvc metrics show
-Para acessar a interface gráfica do MLflow e comparar os treinamentos realizados:
 
-Bash
+### 4. Para acessar a interface gráfica do MLflow e comparar os treinamentos realizados:
+
 mlflow ui
+
 Após o comando, a interface estará disponível em http://localhost:5000.
 
 Estratégia de Modelo
