@@ -20,13 +20,14 @@ Diferente de abordagens baseadas exclusivamente em notebooks, este projeto utili
 
 ## Estrutura do Repositório
 
+Plaintext
 ├── data/               # Dados brutos (raw) e processados
-├── metrics/            # Resultados e scores dos modelos em formato JSON
+├── metrics/            # Resultados e scores dos modelos
 ├── models/             # Modelos treinados (.joblib)
-├── pipeline/           # Scripts acionados pelo DVC para execução das fases
+├── pipeline/           # Scripts de execução das etapas do DVC
 ├── src/                # Lógica central (Limpeza, Treino, Configurações)
-├── dvc.yaml            # Definição das etapas do pipeline
-├── params.yaml         # Centralização de hiperparâmetros e configurações
+├── dvc.yaml            # Configuração do pipeline de dados
+├── params.yaml         # Hiperparâmetros centralizados
 └── requirements.txt    # Dependências do projeto
 
 
@@ -47,27 +48,28 @@ pip install -r requirements.txt
 ### 2. Execução do Pipeline
 Para executar todo o fluxo de processamento e treinamento definido no DVC:
 
-dvc repro
+*dvc repro*
 
 O DVC gerenciará as dependências entre os scripts e garantirá que o estado final seja alcançado.
 
 ### 3. Análise de Resultados
 Para visualizar as métricas finais no terminal:
 
-dvc metrics show
+*dvc metrics show*
 
 ### 4. Para acessar a interface gráfica do MLflow e comparar os treinamentos realizados:
 
-mlflow ui
+*mlflow ui*
 
 Após o comando, a interface estará disponível em http://localhost:5000.
 
-Estratégia de Modelo
+# Estratégia de Modelo
 O projeto utiliza um limiar de decisão (threshold) ajustado para priorizar a captura de transações fraudulentas. Esta abordagem conservadora visa reduzir o risco financeiro, aceitando um volume controlado de falsos positivos em troca de uma cobertura maior de fraudes reais.
 
-Próximos Passos
-Implementação de novas variáveis (Feature Engineering) baseadas no comportamento temporal das transações.
+# Próximos Passos
 
-Adição de testes unitários para validação da integridade dos dados processados.
+1 - Implementação de novas variáveis (Feature Engineering) baseadas no comportamento temporal das transações.
 
-Integração com repositórios de armazenamento remoto para os artefatos do DVC.
+2 - Adição de testes unitários para validação da integridade dos dados processados.
+
+3 - Integração com repositórios de armazenamento remoto para os artefatos do DVC.
