@@ -1,0 +1,39 @@
+stages:
+  preprocess:
+    cmd: python pipeline/preprocess.py
+    deps:
+      - pipeline/preprocess.py
+      - src/preprocessor.py
+      - data/raw/Digital_Payment_Fraud_Detection_Dataset.csv
+    params:
+      - data.target_column
+      - data.drop_columns
+      - train.test_size
+      - train.random_state
+    outs:
+      - data/processed/X_train.npz
+      - data/processed/X_test.npz
+      - data/processed/y_train.npy
+      - data/processed/y_test.npy
+      - data/processed/preprocessor.joblib
+
+  train:
+    cmd: python pipeline/train.py
+    deps:
+      - pipeline/train.py
+      - src/model_trainer.py
+      - data/processed/X_train.npz
+      - data/processed/X_test.npz
+      - data/processed/y_train.npy
+      - data/processed/y_test.npy
+    params:
+      - train.random_state
+      - train.threshold
+      - xgboost
+      - random_forest
+    outs:
+      - models/xgboost.joblib
+      - models/random_forest.joblib
+    metrics:
+      - metrics/scores.json:
+          cache: false

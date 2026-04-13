@@ -1,17 +1,27 @@
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 
-RAW_DATA_PATH = Path("data/raw/Digital_Payment_Fraud_Detection_Dataset.csv")
+# Carregar .env
+load_dotenv()
 
-PROCESSED_DATA_PATH = Path("data/processed/clean_transactions.csv")
+# Caminhos baseados na raiz do projeto
+PROJECT_ROOT = Path(__file__).parent.parent
+DATA_PATH = PROJECT_ROOT / "data"
+RAW_DATA_PATH = DATA_PATH / "raw"
+PROCESSED_DATA_PATH = DATA_PATH / "processed"
+MODELS_PATH = PROJECT_ROOT / "models"
+LOGS_PATH = PROJECT_ROOT / "logs"
+MLFLOW_PATH = PROJECT_ROOT / "mlruns"
+METRICS_PATH = PROJECT_ROOT / "metrics"
 
-MODEL_PATH = Path("models/model.pkl")
+# Criar diretórios se não existirem
+for path in [DATA_PATH, RAW_DATA_PATH, PROCESSED_DATA_PATH, MODELS_PATH, LOGS_PATH, METRICS_PATH]:
+    path.mkdir(parents=True, exist_ok=True)
 
-TARGET = "fraud_label"
+# Variáveis de ambiente e MLFlow
+MODEL_NAME = os.getenv("MODEL_NAME", "fraud_detection_model")
+ENV = os.getenv("ENV", "development")
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
-DROP_COLUMNS = [
-    "transaction_id",
-    "user_id"
-]
-
-TEST_SIZE = 0.2
-RANDOM_STATE = 42
+MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI", f"file:{MLFLOW_PATH}")

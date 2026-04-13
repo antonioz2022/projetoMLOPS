@@ -23,3 +23,12 @@ Thumbs.db
 
 # Environment variables
 .env
+
+# Data
+data/processed
+
+# MLflow
+mlruns/
+
+# DVC local cache
+.dvc/cache/
