@@ -10,7 +10,6 @@ Diferente de abordagens baseadas exclusivamente em notebooks, este projeto utili
 * **MLflow:** Rastreamento de experimentos, registro de hiperparâmetros e comparação visual de performance entre modelos.
 * **Estrutura Modular:** Código organizado em módulos Python (pasta `src`) e scripts de execução de pipeline, facilitando a manutenção e escala.
 
-
 ## Tecnologias Utilizadas
 
 * **Linguagem:** Python 3.12+
@@ -19,10 +18,8 @@ Diferente de abordagens baseadas exclusivamente em notebooks, este projeto utili
 * **Rastreamento de Experimentos:** MLflow
 * **Gerenciamento de Ambiente:** Venv (Virtual Environment)
 
-
 ## Estrutura do Repositório
 
-text
 ├── data/               # Dados brutos (raw) e processados
 ├── metrics/            # Resultados e scores dos modelos em formato JSON
 ├── models/             # Modelos treinados (.joblib)
@@ -32,39 +29,44 @@ text
 ├── params.yaml         # Centralização de hiperparâmetros e configurações
 └── requirements.txt    # Dependências do projeto
 
+Instruções de Execução
 
-Como Executar
-1. Configurar o Ambiente
+1. Configuração do Ambiente
+Criação do ambiente virtual e instalação das bibliotecas necessárias:
 
-# Criar ambiente virtual
+Bash
+# Criar o ambiente virtual
 python -m venv .venv
 
-# Ativar ambiente (Windows)
+# Ativar o ambiente (Windows)
 .\.venv\Scripts\activate
 
 # Instalar dependências
 pip install -r requirements.txt
-2. Rodar o Pipeline Completo
-Graças ao DVC, você não precisa rodar script por script. O comando abaixo executa todo o fluxo (limpeza -> treino -> avaliação):
+2. Execução do Pipeline
+Para executar todo o fluxo de processamento e treinamento definido no DVC:
 
-'dvc repro'
+Bash
+dvc repro
+O DVC gerenciará as dependências entre os scripts e garantirá que o estado final seja alcançado.
 
-3. Visualizar Métricas
-Para ver os resultados no terminal:
+3. Análise de Resultados
+Para visualizar as métricas finais no terminal:
 
-'dvc metrics show'
+Bash
+dvc metrics show
+Para acessar a interface gráfica do MLflow e comparar os treinamentos realizados:
 
-Para abrir a interface visual do MLflow e comparar os modelos graficamente:
+Bash
+mlflow ui
+Após o comando, a interface estará disponível em http://localhost:5000.
 
-'mlflow ui'
-(Após rodar, acesse http://localhost:5000 no seu navegador)
-
-Resultados Atuais
-O projeto compara dois algoritmos principais: XGBoost e Random Forest. O foco atual é a detecção agressiva de fraudes, priorizando a captura de casos suspeitos através de um threshold ajustado.
+Estratégia de Modelo
+O projeto utiliza um limiar de decisão (threshold) ajustado para priorizar a captura de transações fraudulentas. Esta abordagem conservadora visa reduzir o risco financeiro, aceitando um volume controlado de falsos positivos em troca de uma cobertura maior de fraudes reais.
 
 Próximos Passos
-1 - Realizar Feature Engineering avançada para melhorar o F1-Score.
+Implementação de novas variáveis (Feature Engineering) baseadas no comportamento temporal das transações.
 
-2 - Implementar testes unitários para a etapa de limpeza.
+Adição de testes unitários para validação da integridade dos dados processados.
 
-3 - Configurar um servidor remoto para o MLflow.
+Integração com repositórios de armazenamento remoto para os artefatos do DVC.
