@@ -70,6 +70,4 @@ O projeto utiliza um limiar de decisão (threshold) ajustado para priorizar a ca
 
 1 - Implementação de novas variáveis (Feature Engineering) baseadas no comportamento temporal das transações.
 
-2 - Adição de testes unitários para validação da integridade dos dados processados.
-
-3 - Integração com repositórios de armazenamento remoto para os artefatos do DVC.
+2 - Adiçao de novas amostras para aumentar a quantidade de fraudes e assim possivelmente melhorar o modelo.

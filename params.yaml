@@ -7,15 +7,15 @@ data:
 train:
   test_size: 0.2
   random_state: 42
-  threshold: 0.0753
+  threshold: 0.08
 
 xgboost:
   n_estimators: 500
-  max_depth: 5
+  max_depth: 6
   learning_rate: 0.03
   subsample: 0.8
   colsample_bytree: 0.8
 
 random_forest:
-  n_estimators: 400
+  n_estimators: 450
   min_samples_leaf: 2

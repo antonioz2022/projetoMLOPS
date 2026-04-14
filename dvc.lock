@@ -5,16 +5,16 @@ stages:
     deps:
     - path: data/raw/Digital_Payment_Fraud_Detection_Dataset.csv
       hash: md5
-      md5: 9fe91c97f917ac0247657915a09f1f27
-      size: 605112
+      md5: 5e63533cd08a391e9f0d017fb3a6dac4
+      size: 597611
     - path: pipeline/preprocess.py
       hash: md5
-      md5: 2dc7bb2b807925203118e2c7633a3ac7
-      size: 1060
+      md5: aab17fc1326504a3df67f769859ef02c
+      size: 1027
     - path: src/preprocessor.py
       hash: md5
-      md5: a3c09ebfe9cb43119c856832c9a9e1e8
-      size: 5411
+      md5: f0c403cbd5ccb6c72437332f7a4189ee
+      size: 5293
     params:
       params.yaml:
         data.drop_columns:
@@ -26,15 +26,15 @@ stages:
     outs:
     - path: data/processed/X_test.npz
       hash: md5
-      md5: b46ad233e11c602ec6955bd298c9059f
-      size: 57031
+      md5: f3ea30ab950d1a415f58505944ac243e
+      size: 57380
     - path: data/processed/X_train.npz
       hash: md5
-      md5: 283726195363b171f55506ceb9efc249
-      size: 222691
+      md5: 53caa4534b27ca797bb6989ee801dcf3
+      size: 223133
     - path: data/processed/preprocessor.joblib
       hash: md5
-      md5: 2d0915925c83085f30cc6c4ead095d5a
+      md5: fb710390f6f8a37cbc28785cc7bc9a4a
       size: 4748
     - path: data/processed/y_test.npy
       hash: md5
@@ -49,12 +49,12 @@ stages:
     deps:
     - path: data/processed/X_test.npz
       hash: md5
-      md5: b46ad233e11c602ec6955bd298c9059f
-      size: 57031
+      md5: f3ea30ab950d1a415f58505944ac243e
+      size: 57380
     - path: data/processed/X_train.npz
       hash: md5
-      md5: 283726195363b171f55506ceb9efc249
-      size: 222691
+      md5: 53caa4534b27ca797bb6989ee801dcf3
+      size: 223133
     - path: data/processed/y_test.npy
       hash: md5
       md5: cce63d929fe0f3d7cc2ea94691d32431
@@ -65,35 +65,35 @@ stages:
       size: 48128
     - path: pipeline/train.py
       hash: md5
-      md5: 3df418a901c31f7ed4eef962a4ecebb8
-      size: 1453
+      md5: f39de8d01500bfeafb05552516556de9
+      size: 1408
     - path: src/model_trainer.py
       hash: md5
-      md5: 0c206531c396c970c6cfedf6328f3b0a
-      size: 3398
+      md5: f670ac259da389367023b3d79c79fae7
+      size: 3314
     params:
       params.yaml:
         random_forest:
-          n_estimators: 400
+          n_estimators: 450
           min_samples_leaf: 2
         train.random_state: 42
-        train.threshold: 0.0753
+        train.threshold: 0.08
         xgboost:
           n_estimators: 500
-          max_depth: 5
+          max_depth: 6
           learning_rate: 0.03
           subsample: 0.8
           colsample_bytree: 0.8
     outs:
     - path: metrics/scores.json
       hash: md5
-      md5: c2c391676db3af9eb3d07d863593d175
-      size: 194
+      md5: a2705b83ba5b783b3566888143f23daa
+      size: 183
     - path: models/random_forest.joblib
       hash: md5
-      md5: 17a9149a10b836ccb4ad3439fddf9e5d
-      size: 31215529
+      md5: c7e5c61fbd53b4f611264910d5ff712e
+      size: 35137161
     - path: models/xgboost.joblib
       hash: md5
-      md5: 3de0ff11dc113a96f0fec1cb10245dbb
-      size: 1083231
+      md5: 5a6acb25415e32144b1e60ea2937fba0
+      size: 1520357

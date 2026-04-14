@@ -1,4 +1,4 @@
-PYTHON = .venv/Scripts/python.exe
+PYTHON = venv/bin/python
 DVC    = $(PYTHON) -m dvc
 PIP    = $(PYTHON) -m pip
 
