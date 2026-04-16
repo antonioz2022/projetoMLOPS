@@ -5,6 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import yaml
 import numpy as np
+import mlflow
 from scipy.sparse import load_npz
 from src.model_trainer import ModelTrainer
 from src.config import PROCESSED_DATA_PATH, MODELS_PATH, MODEL_NAME, METRICS_PATH
@@ -12,6 +13,9 @@ from src.config import PROCESSED_DATA_PATH, MODELS_PATH, MODEL_NAME, METRICS_PAT
 def main():
     with open("params.yaml") as f:
         params = yaml.safe_load(f)
+
+    mlflow.set_tracking_uri("http://localhost:5000")
+    mlflow.set_experiment(MODEL_NAME)
 
     print("A iniciar stage: TRAIN")
     
