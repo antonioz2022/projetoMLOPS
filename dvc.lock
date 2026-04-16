@@ -5,16 +5,16 @@ stages:
     deps:
     - path: data/raw/Digital_Payment_Fraud_Detection_Dataset.csv
       hash: md5
-      md5: 5e63533cd08a391e9f0d017fb3a6dac4
-      size: 597611
+      md5: 9fe91c97f917ac0247657915a09f1f27
+      size: 605112
     - path: pipeline/preprocess.py
       hash: md5
-      md5: aab17fc1326504a3df67f769859ef02c
-      size: 1027
+      md5: 2dc7bb2b807925203118e2c7633a3ac7
+      size: 1060
     - path: src/preprocessor.py
       hash: md5
-      md5: f0c403cbd5ccb6c72437332f7a4189ee
-      size: 5293
+      md5: a3c09ebfe9cb43119c856832c9a9e1e8
+      size: 5411
     params:
       params.yaml:
         data.drop_columns:
@@ -26,11 +26,11 @@ stages:
     outs:
     - path: data/processed/X_test.npz
       hash: md5
-      md5: f3ea30ab950d1a415f58505944ac243e
+      md5: 843eb69e2a5e328da9f2ebf2733c8664
       size: 57380
     - path: data/processed/X_train.npz
       hash: md5
-      md5: 53caa4534b27ca797bb6989ee801dcf3
+      md5: 21219a6a9d4f22c173da6789e18f278a
       size: 223133
     - path: data/processed/preprocessor.joblib
       hash: md5
@@ -49,11 +49,11 @@ stages:
     deps:
     - path: data/processed/X_test.npz
       hash: md5
-      md5: f3ea30ab950d1a415f58505944ac243e
+      md5: 843eb69e2a5e328da9f2ebf2733c8664
       size: 57380
     - path: data/processed/X_train.npz
       hash: md5
-      md5: 53caa4534b27ca797bb6989ee801dcf3
+      md5: 21219a6a9d4f22c173da6789e18f278a
       size: 223133
     - path: data/processed/y_test.npy
       hash: md5
@@ -65,19 +65,19 @@ stages:
       size: 48128
     - path: pipeline/train.py
       hash: md5
-      md5: f39de8d01500bfeafb05552516556de9
-      size: 1408
+      md5: 67f72be7ed5e80ea46dc37f5a010ac0d
+      size: 1563
     - path: src/model_trainer.py
       hash: md5
-      md5: f670ac259da389367023b3d79c79fae7
-      size: 3314
+      md5: 0c206531c396c970c6cfedf6328f3b0a
+      size: 3398
     params:
       params.yaml:
         random_forest:
           n_estimators: 450
           min_samples_leaf: 2
         train.random_state: 42
-        train.threshold: 0.08
+        train.threshold: 0.1
         xgboost:
           n_estimators: 500
           max_depth: 6
@@ -87,13 +87,13 @@ stages:
     outs:
     - path: metrics/scores.json
       hash: md5
-      md5: a2705b83ba5b783b3566888143f23daa
-      size: 183
+      md5: cce56b7875452914645f5aa28c1eb5a4
+      size: 194
     - path: models/random_forest.joblib
       hash: md5
-      md5: c7e5c61fbd53b4f611264910d5ff712e
-      size: 35137161
+      md5: 2b4177fd8f109ab291ab1f06eb752d57
+      size: 35123849
     - path: models/xgboost.joblib
       hash: md5
-      md5: 5a6acb25415e32144b1e60ea2937fba0
-      size: 1520357
+      md5: aac6112328c762d541941820f1c139f9
+      size: 1541179
